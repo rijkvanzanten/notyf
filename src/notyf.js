@@ -1,7 +1,6 @@
-(function(){
-    this.Notyf = function(){
-      //List of notifications currently active
-      this.notifications = [];
+var Notyf = function(){
+  //List of notifications currently active
+  this.notifications = [];
 
       var defaults = {
         delay:2000,
@@ -31,7 +30,7 @@
     /**
     * Shows an alert card
     */
-    this.Notyf.prototype.alert = function(alertMessage){
+    Notyf.prototype.alert = function(alertMessage){
       var card = buildNotificationCard.call(this, alertMessage, this.options.alertIcon);
       card.className += ' notyf--alert';
       this.container.appendChild(card);
@@ -41,7 +40,7 @@
     /**
     * Shows a confirm card
     */
-    this.Notyf.prototype.confirm = function(alertMessage){
+    Notyf.prototype.confirm = function(alertMessage){
       var card = buildNotificationCard.call(this, alertMessage, this.options.confirmIcon);
       card.className += ' notyf--confirm';
       this.container.appendChild(card);
@@ -120,14 +119,4 @@
           }
       }
     }
-
-})();
-
-(function() {
-    if (typeof define === 'function' && define.amd)
-        define('Notyf', function () { return Notyf; });
-    else if (typeof module !== 'undefined' && module.exports)
-        module.exports = Notyf;
-    else
-        window.Notyf = Notyf;
-})();
+module.exports = Notyf;
