@@ -9,8 +9,8 @@ var Notyf = function(){
       }
 
       if (arguments[0] && typeof arguments[0] == "object"){
-        this.options = extendDefaults(defaults, arguments[0]);
-      }else{
+        this.options = Object.assign({}, defaults, arguments[0]);
+      } else {
         this.options = defaults;
       }
 
@@ -48,19 +48,6 @@ var Notyf = function(){
     }
 
     //---------- Private methods ---------------
-
-    /**
-    * Populates the source object with the value from the same keys found in destination
-    */
-    function extendDefaults(source, destination){
-      for (property in destination){
-        //Avoid asigning inherited properties of destination, only asign to source the destination own properties
-        if(destination.hasOwnProperty(property)){
-          source[property] = destination[property];
-        }
-      }
-      return source;
-    }
 
     /**
     * Creates a generic card with the param message. Returns a document fragment.
